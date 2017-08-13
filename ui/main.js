@@ -1,5 +1,5 @@
 console.log('Loaded!');
-var tag = document.getElementById("main-id");
+/*var tag = document.getElementById("main-id");
  tag.innerHTML = "helo its over";
  
  // move the image
@@ -11,8 +11,16 @@ var tag = document.getElementById("main-id");
      
  }
  
-
  img.onclick = function(){
      var interval = setInterval(moveRight,100);
-};
+};*/
+
+var counter = 0;
+var button = document.getElementById("counter");
+
+button.onclick = function(){
+    counter = counter + 1;
+    var span = documennt.getElementById("count");
+    span.innerHTML = counter.toString();
+}
  
