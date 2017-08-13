@@ -8,5 +8,5 @@ var tag = document.getElementById("main-id");
      img.style.marginleft = '100px';
      
      
- }
+ };
  
