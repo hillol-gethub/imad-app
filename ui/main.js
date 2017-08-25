@@ -39,4 +39,8 @@ button.onclick = function(){
     request.open('GET', 'http://majumdar123hillol.imad.hasura-app.io/counter', true);
     request.send(null);
 };
+
+// capture the input
+var inputName = document.getElementById("name");
+var name = inputName.value;
  
