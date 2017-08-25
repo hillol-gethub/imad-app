@@ -48,9 +48,14 @@ submit.onclick = function(){
     //make a request to the server and send the name
     
     //compute a list of names and render it as a list
-    
-    
-}
+    var names = ['names1', 'names2', 'names3'];
+    var list = '';
+    for(var i=0; i< names.length; i++){
+        list += '<li>' + names[i] + '</li>;
+    }
+    var ul = document.getElementById("namelist");
+    ul.innerHTML = list;
+};
 
 
 
