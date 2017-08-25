@@ -41,20 +41,44 @@ button.onclick = function(){
 };
 
 // capture the input
-var inputName = document.getElementById("name");
-var name = inputName.value;
+
 var submit = document.getElementById("submit_btn");
 submit.onclick = function(){
     //make a request to the server and send the name
     
     //compute a list of names and render it as a list
-    var names = ['names1', 'names2', 'names3', 'names4'];
-    var list = '';
-    for(var i=0; i< names.length; i++){
-        list += '<li>' + names[i] + '</li>';
-    }
-    var ul = document.getElementById("namelist");
-    ul.innerHTML = list;
+    
+    
+    
+    //create a request object
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(request.readyState === XMLHttpRequest.DONE){
+            //Take some actrion
+            if(request.status === 200){
+                var names = request.responseText;
+                name = JSON.parse(names);
+                var list = '';
+                for(var i=0; i< names.length; i++){
+                    list += '<li>' + names[i] + '</li>';
+                }
+                var ul = document.getElementById("namelist");
+                ul.innerHTML = list;
+
+            }
+        }
+        
+        
+    };
+    var inputName = document.getElementById("name");
+    var name = inputName.value;
+    //RENDER THE VARIABLE IN THE CORRECT SPAN
+    request.open('GET', 'http://majumdar123hillol.imad.hasura-app.io/submit-name?name=' + name, true);
+    request.send(null);
+    
+    
+    
+    
 };
 
 
