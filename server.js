@@ -14,15 +14,32 @@ var Poll = require('pg').Pool;
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
-	
+var articles = {
+ 'article-one' : {
        title: 'Article One | Hillol Majumdar',
        heading: 'Article',
        date:'Sep 5, 2016',
        content:`<p>
        This is hillol. 1st article is displayed here.
        </p>`
-    };
+    },
+ 'article-two' : {
+       title: 'Article Two | Hillol Majumdar',
+       heading: 'Article',
+       date:'Sep 5, 2016',
+       content:`<p>
+       This is hillol. 1st article is displayed here.
+       </p>`
+},
+ 'article-three': {
+       title: 'Article Three | Hillol Majumdar',
+       heading: 'Article',
+       date:'Sep 5, 2016',
+       content:`<p>
+       This is hillol. 1st article is displayed here.
+       </p>`
+},
+};
     function createTemplete(data){
        var title = data.title;
        var date = data.date;
@@ -71,17 +88,13 @@ app.get('/counter', function(req , res){
     res.send(counter.toString());
     });
     
-app.get('/article-one', function (req, res) {
-    res.send(createTemplete(articleOne));
+app.get('/:articleName', function (req, res) {
+    // articleName == article-one
+    //articles[articleName] == {} content object for aricle one
+   var articleName = req.params.articleName;
+    res.send(createTemplete(articles[articleName]));
 });
 
-app.get('/article-two', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
