@@ -36,7 +36,7 @@ button.onclick = function(){
     };
     
     //RENDER THE VARIABLE IN THE CORRECT SPAN
-    request.send('GET', 'http://majumdar123hillol.imad.hasura-app.io/counter', true);
+    request.open('GET', 'http://majumdar123hillol.imad.hasura-app.io/counter', true);
     request.send(null);
 };
  
