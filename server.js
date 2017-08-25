@@ -101,9 +101,24 @@ app.get('/submit-name', function(req, res){
 });
 
 
-app.get('/:articleName', function (req, res) {
+app.get('/:articles/:articleName', function (req, res) {
     // articleName == article-one
     //articles[articleName] == {} content object for aricle one
+    // Fetch data from database to display
+    pool.query("select * from article where title = '" + req.params.articleName + "'", function (err, result)
+    
+    
+    
+    
+    
+    
+    
+    });
+    
+    
+    
+    
+    
    var articleName = req.params.articleName;
     res.send(createTemplete(articles[articleName]));
 });
