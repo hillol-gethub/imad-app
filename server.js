@@ -117,14 +117,6 @@ app.get('/articles/:articleName', function (req, res) {
         }
     });
     });
-    
-    
-    
-    
-    
-   var articleName = req.params.articleName;
-    res.send(createTemplete(articles[articleName]));
-});
 
 
 app.get('/ui/style.css', function (req, res) {
