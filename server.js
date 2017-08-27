@@ -109,6 +109,36 @@ app.post('/create-user', function(req, rea){
     });
 
 
+app.post('/login', function(req, rea){
+    //username, password
+    //{"username": "hillol", "password": "password"}
+     //JSON
+     
+     var username = req.body.username;
+     var password = req.body.password;
+     
+     pool.query('select * into userr where username = $1', [username], function(req, res){  
+         if(err){res.status(500).send(err.toString());}
+       else {
+           if(result.rows.lengtyh === 0){
+           res.send(403).send('username is invalid');}
+           else{
+               //match the password
+               var dbString = result.rows[0].password;
+               var salt = dbString.split('$')[2];
+               var hashedPassword = hash(password, salt);
+               if(hashedPassword === dbString){
+                   res.send("Credentials correct");
+               } else {
+                   res.send("invalid password");
+               }
+           }
+           
+       }
+         
+     });
+    });
+
 
 /*app.get('/test-db', function(req, res){
     pool.query('select * from test', function(err, result){
