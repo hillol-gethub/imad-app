@@ -92,7 +92,7 @@ app.get('/hash/:input',function(req, res){
     res.send(hashedString);
 });
 
-app.post('/create-user', function(req, rea){
+app.post('/create-user', function(req, res){
     //username, password
     //{"username": "hillol", "password": "password"}
      //JSON
@@ -109,7 +109,7 @@ app.post('/create-user', function(req, rea){
     });
 
 
-app.post('/login', function(req, rea){
+app.post('/login', function(req, res){
     //username, password
     //{"username": "hillol", "password": "password"}
      //JSON
