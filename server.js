@@ -101,7 +101,7 @@ app.post('/create-user', function(req, rea){
      var password = req.body.password;
      var salt = crypto.randomBytes(128).toString('hex');
      var dbString = hash(password, salt);
-     pool.query('insert into "userr" (username, password) values ($1, $2)', [username, dbString], function(req, res){  
+     pool.query('insert into userr (username, password) values ($1, $2)', [username, dbString], function(req, res){  
          if(err){res.status(500).send(err.toString());}
        else {res.send("User Created Fully"); }
          
