@@ -101,7 +101,7 @@ app.post('/create-user', function(req, res){
      var password = req.body.password;
      var salt = crypto.randomBytes(128).toString('hex');
      var dbString = hash(password, salt);
-     pool.query('insert into userr (username, password) values ($1, $2)', [username, dbString], function(req, res){  
+     pool.query('insert into userr (username, password) values ($1, $2)', [username, dbString], function(err, result){  
          if(err){res.status(500).send(err.toString());}
        else {res.send("User Created Fully"); }
          
@@ -117,7 +117,7 @@ app.post('/login', function(req, res){
      var username = req.body.username;
      var password = req.body.password;
      
-     pool.query('select * into userr where username = $1', [username], function(req, res){  
+     pool.query('select * into userr where username = $1', [username], function(err, result){  
          if(err){res.status(500).send(err.toString());}
        else {
            if(result.rows.lengtyh === 0){
