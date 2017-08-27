@@ -61,7 +61,7 @@ var articles = {
     <hr/>
     ${heading}
     <div>
-      ${date}
+      ${date.toDateString()}
     </div>
     <div>
     ${content}
