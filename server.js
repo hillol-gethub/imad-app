@@ -16,6 +16,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+var pool = new Poll(config);
 
 var articles = {
  'article-one' : {
@@ -108,7 +109,7 @@ app.post('/create-user', function(req, rea){
     });
 
 
-var pool = new Poll(config);
+
 app.get('/test-db', function(req, res){
     pool.query('select * from test', function(err, result){
        if(err){res.status(500).send(err.toString());}
